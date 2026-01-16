@@ -70,22 +70,22 @@ App
 
 ### Full Blog View
 
-![Blog Homepage](./screenshots/blog-homepage.png)
+![Blog Homepage](![alt text](image.png))
 *The complete blog site showing header, about section, and article list*
 
 ### Header Component
 
-![Header Section](./screenshots/header.png)
+![Header Section](![alt text](image-1.png))
 *Blog title displayed in the header*
 
 ### About Section
 
-![About Section](./screenshots/about.png)
+![About Section](![alt text](image-2.png))
 *About section with blog logo and description*
 
 ### Article List
 
-![Article List](./screenshots/articles.png)
+![Article List](![alt text](image-3.png))
 *List of blog articles with titles, dates, and previews*
 
 ## 🔑 Key Concepts Demonstrated
