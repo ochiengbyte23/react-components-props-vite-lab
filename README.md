@@ -1,94 +1,150 @@
-# Putting it All Together: Components and Props
+# React Components & Props - Blog Site
 
-## Learning Goals
+A simple blog application built with React and Vite to demonstrate component composition and props passing.
 
-- Create components that return JSX
-- Use props to make components dynamic
-- Transform lists of data into lists of components
+## 🚀 Getting Started
 
-## Overview
+### Prerequisites
 
-Now that you've learned how to work with components in React, it's time to build
-something and put those skills to use! Your goal for this lab is to make a
-_static site_ in React to practice building components, writing JSX, and passing
-down data as props.
+- Node.js (v14 or higher)
+- npm or yarn
 
-We'll be creating a personal blog site, similar to
-[Dan Abramov's Overreacted](https://overreacted.io/):
+### Installation
 
-![demo](https://curriculum-content.s3.amazonaws.com/phase-2/react-hooks-component-props-mini-project/demo.png)
+1. Clone the repository:
 
-There is some starter code available in `src/components/App.js`. There is also
-some data in `data/blog.js` that is being imported into `App` so you can pass it
-down to the components that need it.
+  ```bash
+  git clone <your-repo-url>
+  cd react-components-props-vite-lab
+  ```
 
-## Deliverables
+1. Install dependencies:
 
-Have a look at the components below and draw out a component hierarchy so you
-can determine how to pass data down as props.
+  ```bash
+  npm install
+  ```
 
-### Header
+1. Start the development server:
 
-Make a `Header` component as a child of `App`. It should return:
+```bash
+npm run dev
+```
 
-- a `<header>` element with the following elements inside:
-  - an `<h1>` with the name of the blog, passed as a prop called `name`
+1. Open your browser and navigate to:
 
-### About
+```text
+http://localhost:5173
+```
 
-Make an `About` component as a child of `App`. It should return:
+### Available Scripts
 
-- an `<aside>` element with the following elements inside:
-  - an `<img>` element, with the `src` set to an image passed as a prop called
-    `image`
-  - the `<img>` element should use this placeholder image as a _default value_
-    for the prop if no prop is passed in: "https://via.placeholder.com/215"
-  - the image should also be accessible! Give it an `alt` attribute of "blog
-    logo"
-  - a `<p>` element, with the text for the blog passed in as a prop called
-    `about`
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
 
-### ArticleList
+## 📁 Project Structure
 
-Make an `ArticleList` component as a child of `App`. It should return:
+```text
+src/
+├── components/
+│   ├── Header.jsx       # Blog header with title
+│   ├── About.jsx        # About section with image and description
+│   ├── ArticleList.jsx  # Container for article list
+│   └── Article.jsx      # Individual article component
+├── data/
+│   └── blog.js          # Blog data (name, about, posts)
+└── App.jsx              # Main app component
+```
 
-- a `<main>` element with the following components inside:
-  - an array of `Article` components (one component for each of the `posts`
-    passed down as props to `ArticleList`)
-  - make sure to assign a unique `key` attribute to each `Article`
+## 🧩 Component Hierarchy
 
-### Article
+```text
+App
+├── Header
+├── About
+└── ArticleList
+    └── Article (multiple instances)
+```
 
-Make an `Article` component as a child of `ArticleList`. It should return:
+## 📸 Screenshots
 
-- an `<article>` element, with the following elements inside:
-  - an `<h3>` element displaying the title of the article, passed as a prop
-    called `title`
-  - a `<small>` element displaying the date of the article, passed as a prop
-    called `date`
-    - a _default value_ of "January 1, 1970" should be used if no date is passed
-      as a prop
-  - a `<p>` element displaying the preview of the article, passed as a prop
-    called `preview`
+### Full Blog View
 
-### Bonus Feature: 'Minutes to Read'
+![Blog Homepage](./screenshots/blog-homepage.png)
+*The complete blog site showing header, about section, and article list*
 
-You'll notice in the original [Overreacted](https://overreacted.io/) site,
-there's a 'minutes to read' indicator next to each article.
+### Header Component
 
-If the article takes less than 30 minutes to read:
+![Header Section](./screenshots/header.png)
+*Blog title displayed in the header*
 
-- For every 5 minutes (rounded up to the nearest 5), display a coffee cup emoji.
-  For example, if the article takes 3 minutes to read, you should display "☕️ 3
-  min read". If the article takes 7 minute, you should display "☕️☕️ 7 min
-  read".
+### About Section
 
-If the article takes 30 minutes or longer to read:
+![About Section](./screenshots/about.png)
+*About section with blog logo and description*
 
-- For every 10 minutes (rounded up to the nearest 10), display a bento box
-  emoji. For example, if the article takes 35 minutes to read, you should
-  display "🍱🍱🍱🍱 35 min read". If the article takes 61 minutes to read, you
-  should display "🍱🍱🍱🍱🍱🍱🍱 61 min read".
+### Article List
 
-There aren't tests for this feature, so you'll have to rely on running the code
-in the browser to see if your implementation works!
+![Article List](./screenshots/articles.png)
+*List of blog articles with titles, dates, and previews*
+
+## 🔑 Key Concepts Demonstrated
+
+### Props Passing
+
+- Parent components pass data to child components via props
+- `App` → `Header`, `About`, `ArticleList`
+- `ArticleList` → `Article`
+
+### Default Props
+
+- `About` component uses a placeholder image if none provided
+- `Article` component defaults date to "January 1, 1970"
+
+### List Rendering
+
+- `ArticleList` maps over posts array to render multiple `Article` components
+- Each `Article` has a unique `key` prop for React's reconciliation
+
+## 📝 Component Documentation
+
+### Header Components
+
+Displays the blog's name in an h1 tag.
+
+**Props:**
+
+- `name` (string, required) - The blog's title
+
+### About Component
+
+Shows blog information with an image and description.
+
+**Props:**
+
+- `image` (string, optional) - URL for blog logo (defaults to placeholder)
+- `about` (string, required) - Blog description text
+
+### ArticleList Component
+
+Container that renders a list of Article components.
+
+**Props:**
+
+- `posts` (array, required) - Array of post objects
+
+### Article Component
+
+Displays individual article information.
+
+**Props:**
+
+- `title` (string, required) - Article title
+- `date` (string, optional) - Publication date (defaults to "January 1, 1970")
+- `preview` (string, required) - Article preview text
+- `minutes` (number, optional) - Reading time in minutes
+
+## 🛠️ Built With
+
+- [React](https://reactjs.org/) - UI library
+- [Vite](https://vitejs.dev/) - Build tool and dev server
